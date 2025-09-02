@@ -1,0 +1,1039 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище BD_PuppyHouseModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="CategoryService">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CategoryTovar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Dog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Poroda" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID_User" Type="int" />
+          <Property Name="Age" Type="int" />
+        </EntityType>
+        <EntityType Name="NoteService">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Master" Type="int" />
+          <Property Name="ID_Dog" Type="int" />
+          <Property Name="ID_Service" Type="int" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Sale" Type="int" />
+          <Property Name="ID_Status" Type="int" />
+        </EntityType>
+        <EntityType Name="Postavka">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Tovar" Type="int" />
+          <Property Name="Count" Type="int" />
+          <Property Name="Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Prodazha">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Employee" Type="int" />
+          <Property Name="Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Description" Type="nchar" MaxLength="250" />
+          <Property Name="Price" Type="float" />
+          <Property Name="Time" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID_Category" Type="int" />
+        </EntityType>
+        <EntityType Name="SpisokTovars">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Prodazha" Type="int" />
+          <Property Name="ID_Tovar" Type="int" />
+          <Property Name="Count" Type="int" />
+        </EntityType>
+        <EntityType Name="StatusEmployee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="StatusNote">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tovar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Price" Type="float" />
+          <Property Name="ID_Category" Type="int" />
+          <Property Name="ID_Brand" Type="int" />
+          <Property Name="ID_Country" Type="int" />
+          <Property Name="Size" Type="nvarchar" MaxLength="250" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FIO" Type="nvarchar" MaxLength="150" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="30" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID_Role" Type="int" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID_StatusEmployee" Type="int" />
+        </EntityType>
+        <Association Name="FK_Dog_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Dog" Type="Self.Dog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Dog">
+              <PropertyRef Name="ID_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NoteService_Dog">
+          <End Role="Dog" Type="Self.Dog" Multiplicity="0..1" />
+          <End Role="NoteService" Type="Self.NoteService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dog">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NoteService">
+              <PropertyRef Name="ID_Dog" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NoteService_Service">
+          <End Role="Service" Type="Self.Service" Multiplicity="0..1" />
+          <End Role="NoteService" Type="Self.NoteService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NoteService">
+              <PropertyRef Name="ID_Service" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NoteService_StatusNote">
+          <End Role="StatusNote" Type="Self.StatusNote" Multiplicity="0..1" />
+          <End Role="NoteService" Type="Self.NoteService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusNote">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NoteService">
+              <PropertyRef Name="ID_Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NoteService_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="NoteService" Type="Self.NoteService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NoteService">
+              <PropertyRef Name="ID_Master" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Postavka_Tovar">
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="0..1" />
+          <End Role="Postavka" Type="Self.Postavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tovar">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Postavka">
+              <PropertyRef Name="ID_Tovar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prodazha_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Prodazha" Type="Self.Prodazha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Prodazha">
+              <PropertyRef Name="ID_Employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Service_CategoryService">
+          <End Role="CategoryService" Type="Self.CategoryService" Multiplicity="0..1" />
+          <End Role="Service" Type="Self.Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryService">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="ID_Category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpisokTovars_Prodazha">
+          <End Role="Prodazha" Type="Self.Prodazha" Multiplicity="0..1" />
+          <End Role="SpisokTovars" Type="Self.SpisokTovars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prodazha">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SpisokTovars">
+              <PropertyRef Name="ID_Prodazha" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpisokTovars_Tovar">
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="0..1" />
+          <End Role="SpisokTovars" Type="Self.SpisokTovars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tovar">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SpisokTovars">
+              <PropertyRef Name="ID_Tovar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tovar_Brand">
+          <End Role="Brand" Type="Self.Brand" Multiplicity="0..1" />
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tovar">
+              <PropertyRef Name="ID_Brand" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tovar_CategoryTovar">
+          <End Role="CategoryTovar" Type="Self.CategoryTovar" Multiplicity="0..1" />
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryTovar">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tovar">
+              <PropertyRef Name="ID_Category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tovar_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tovar">
+              <PropertyRef Name="ID_Country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="ID_Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_StatusEmployee">
+          <End Role="StatusEmployee" Type="Self.StatusEmployee" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusEmployee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="ID_StatusEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище BD_PuppyHouseModelContainer">
+          <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoryService" EntityType="Self.CategoryService" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoryTovar" EntityType="Self.CategoryTovar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dog" EntityType="Self.Dog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NoteService" EntityType="Self.NoteService" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Postavka" EntityType="Self.Postavka" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prodazha" EntityType="Self.Prodazha" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SpisokTovars" EntityType="Self.SpisokTovars" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusEmployee" EntityType="Self.StatusEmployee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusNote" EntityType="Self.StatusNote" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tovar" EntityType="Self.Tovar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Dog_User" Association="Self.FK_Dog_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Dog" EntitySet="Dog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NoteService_Dog" Association="Self.FK_NoteService_Dog">
+            <End Role="Dog" EntitySet="Dog" />
+            <End Role="NoteService" EntitySet="NoteService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NoteService_Service" Association="Self.FK_NoteService_Service">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="NoteService" EntitySet="NoteService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NoteService_StatusNote" Association="Self.FK_NoteService_StatusNote">
+            <End Role="StatusNote" EntitySet="StatusNote" />
+            <End Role="NoteService" EntitySet="NoteService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NoteService_User" Association="Self.FK_NoteService_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="NoteService" EntitySet="NoteService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Postavka_Tovar" Association="Self.FK_Postavka_Tovar">
+            <End Role="Tovar" EntitySet="Tovar" />
+            <End Role="Postavka" EntitySet="Postavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prodazha_User1" Association="Self.FK_Prodazha_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="Prodazha" EntitySet="Prodazha" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Service_CategoryService" Association="Self.FK_Service_CategoryService">
+            <End Role="CategoryService" EntitySet="CategoryService" />
+            <End Role="Service" EntitySet="Service" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpisokTovars_Prodazha" Association="Self.FK_SpisokTovars_Prodazha">
+            <End Role="Prodazha" EntitySet="Prodazha" />
+            <End Role="SpisokTovars" EntitySet="SpisokTovars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpisokTovars_Tovar" Association="Self.FK_SpisokTovars_Tovar">
+            <End Role="Tovar" EntitySet="Tovar" />
+            <End Role="SpisokTovars" EntitySet="SpisokTovars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tovar_Brand" Association="Self.FK_Tovar_Brand">
+            <End Role="Brand" EntitySet="Brand" />
+            <End Role="Tovar" EntitySet="Tovar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tovar_CategoryTovar" Association="Self.FK_Tovar_CategoryTovar">
+            <End Role="CategoryTovar" EntitySet="CategoryTovar" />
+            <End Role="Tovar" EntitySet="Tovar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tovar_Country" Association="Self.FK_Tovar_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Tovar" EntitySet="Tovar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_StatusEmployee" Association="Self.FK_User_StatusEmployee">
+            <End Role="StatusEmployee" EntitySet="StatusEmployee" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BD_PuppyHouseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Tovars" Relationship="Self.FK_Tovar_Brand" FromRole="Brand" ToRole="Tovar" />
+        </EntityType>
+        <EntityType Name="CategoryService">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Services" Relationship="Self.FK_Service_CategoryService" FromRole="CategoryService" ToRole="Service" />
+        </EntityType>
+        <EntityType Name="CategoryTovar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tovars" Relationship="Self.FK_Tovar_CategoryTovar" FromRole="CategoryTovar" ToRole="Tovar" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Tovars" Relationship="Self.FK_Tovar_Country" FromRole="Country" ToRole="Tovar" />
+        </EntityType>
+        <EntityType Name="Dog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Poroda" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_User" Type="Int32" />
+          <Property Name="Age" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Dog_User" FromRole="Dog" ToRole="User" />
+          <NavigationProperty Name="NoteServices" Relationship="Self.FK_NoteService_Dog" FromRole="Dog" ToRole="NoteService" />
+        </EntityType>
+        <EntityType Name="NoteService">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Master" Type="Int32" />
+          <Property Name="ID_Dog" Type="Int32" />
+          <Property Name="ID_Service" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Sale" Type="Int32" />
+          <Property Name="ID_Status" Type="Int32" />
+          <NavigationProperty Name="Dog" Relationship="Self.FK_NoteService_Dog" FromRole="NoteService" ToRole="Dog" />
+          <NavigationProperty Name="Service" Relationship="Self.FK_NoteService_Service" FromRole="NoteService" ToRole="Service" />
+          <NavigationProperty Name="StatusNote" Relationship="Self.FK_NoteService_StatusNote" FromRole="NoteService" ToRole="StatusNote" />
+          <NavigationProperty Name="User" Relationship="Self.FK_NoteService_User" FromRole="NoteService" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Postavka">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Tovar" Type="Int32" />
+          <Property Name="Count" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Tovar" Relationship="Self.FK_Postavka_Tovar" FromRole="Postavka" ToRole="Tovar" />
+        </EntityType>
+        <EntityType Name="Prodazha">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Employee" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Prodazha_User1" FromRole="Prodazha" ToRole="User" />
+          <NavigationProperty Name="SpisokTovars" Relationship="Self.FK_SpisokTovars_Prodazha" FromRole="Prodazha" ToRole="SpisokTovars" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="Time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Category" Type="Int32" />
+          <NavigationProperty Name="CategoryService" Relationship="Self.FK_Service_CategoryService" FromRole="Service" ToRole="CategoryService" />
+          <NavigationProperty Name="NoteServices" Relationship="Self.FK_NoteService_Service" FromRole="Service" ToRole="NoteService" />
+        </EntityType>
+        <EntityType Name="SpisokTovar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Prodazha" Type="Int32" />
+          <Property Name="ID_Tovar" Type="Int32" />
+          <Property Name="Count" Type="Int32" />
+          <NavigationProperty Name="Prodazha" Relationship="Self.FK_SpisokTovars_Prodazha" FromRole="SpisokTovars" ToRole="Prodazha" />
+          <NavigationProperty Name="Tovar" Relationship="Self.FK_SpisokTovars_Tovar" FromRole="SpisokTovars" ToRole="Tovar" />
+        </EntityType>
+        <EntityType Name="StatusEmployee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_User_StatusEmployee" FromRole="StatusEmployee" ToRole="User" />
+        </EntityType>
+        <EntityType Name="StatusNote">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NoteServices" Relationship="Self.FK_NoteService_StatusNote" FromRole="StatusNote" ToRole="NoteService" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tovar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="ID_Category" Type="Int32" />
+          <Property Name="ID_Brand" Type="Int32" />
+          <Property Name="ID_Country" Type="Int32" />
+          <Property Name="Size" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Brand" Relationship="Self.FK_Tovar_Brand" FromRole="Tovar" ToRole="Brand" />
+          <NavigationProperty Name="CategoryTovar" Relationship="Self.FK_Tovar_CategoryTovar" FromRole="Tovar" ToRole="CategoryTovar" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Tovar_Country" FromRole="Tovar" ToRole="Country" />
+          <NavigationProperty Name="Postavkas" Relationship="Self.FK_Postavka_Tovar" FromRole="Tovar" ToRole="Postavka" />
+          <NavigationProperty Name="SpisokTovars" Relationship="Self.FK_SpisokTovars_Tovar" FromRole="Tovar" ToRole="SpisokTovars" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FIO" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Role" Type="Int32" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_StatusEmployee" Type="Int32" />
+          <NavigationProperty Name="Dogs" Relationship="Self.FK_Dog_User" FromRole="User" ToRole="Dog" />
+          <NavigationProperty Name="NoteServices" Relationship="Self.FK_NoteService_User" FromRole="User" ToRole="NoteService" />
+          <NavigationProperty Name="Prodazhas" Relationship="Self.FK_Prodazha_User1" FromRole="User" ToRole="Prodazha" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="StatusEmployee" Relationship="Self.FK_User_StatusEmployee" FromRole="User" ToRole="StatusEmployee" />
+        </EntityType>
+        <Association Name="FK_Tovar_Brand">
+          <End Role="Brand" Type="Self.Brand" Multiplicity="0..1" />
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tovar">
+              <PropertyRef Name="ID_Brand" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Service_CategoryService">
+          <End Role="CategoryService" Type="Self.CategoryService" Multiplicity="0..1" />
+          <End Role="Service" Type="Self.Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryService">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="ID_Category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tovar_CategoryTovar">
+          <End Role="CategoryTovar" Type="Self.CategoryTovar" Multiplicity="0..1" />
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryTovar">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tovar">
+              <PropertyRef Name="ID_Category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tovar_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tovar">
+              <PropertyRef Name="ID_Country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dog_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Dog" Type="Self.Dog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Dog">
+              <PropertyRef Name="ID_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NoteService_Dog">
+          <End Role="Dog" Type="Self.Dog" Multiplicity="0..1" />
+          <End Role="NoteService" Type="Self.NoteService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dog">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NoteService">
+              <PropertyRef Name="ID_Dog" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NoteService_Service">
+          <End Role="Service" Type="Self.Service" Multiplicity="0..1" />
+          <End Role="NoteService" Type="Self.NoteService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NoteService">
+              <PropertyRef Name="ID_Service" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NoteService_StatusNote">
+          <End Role="StatusNote" Type="Self.StatusNote" Multiplicity="0..1" />
+          <End Role="NoteService" Type="Self.NoteService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusNote">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NoteService">
+              <PropertyRef Name="ID_Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NoteService_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="NoteService" Type="Self.NoteService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NoteService">
+              <PropertyRef Name="ID_Master" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Postavka_Tovar">
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="0..1" />
+          <End Role="Postavka" Type="Self.Postavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tovar">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Postavka">
+              <PropertyRef Name="ID_Tovar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prodazha_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Prodazha" Type="Self.Prodazha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Prodazha">
+              <PropertyRef Name="ID_Employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpisokTovars_Prodazha">
+          <End Role="Prodazha" Type="Self.Prodazha" Multiplicity="0..1" />
+          <End Role="SpisokTovars" Type="Self.SpisokTovar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prodazha">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SpisokTovars">
+              <PropertyRef Name="ID_Prodazha" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="ID_Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpisokTovars_Tovar">
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="0..1" />
+          <End Role="SpisokTovars" Type="Self.SpisokTovar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tovar">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SpisokTovars">
+              <PropertyRef Name="ID_Tovar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_StatusEmployee">
+          <End Role="StatusEmployee" Type="Self.StatusEmployee" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusEmployee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="ID_StatusEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BD_PuppyHouseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Brands" EntityType="Self.Brand" />
+          <EntitySet Name="CategoryServices" EntityType="Self.CategoryService" />
+          <EntitySet Name="CategoryTovars" EntityType="Self.CategoryTovar" />
+          <EntitySet Name="Countries" EntityType="Self.Country" />
+          <EntitySet Name="Dogs" EntityType="Self.Dog" />
+          <EntitySet Name="NoteServices" EntityType="Self.NoteService" />
+          <EntitySet Name="Postavkas" EntityType="Self.Postavka" />
+          <EntitySet Name="Prodazhas" EntityType="Self.Prodazha" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Services" EntityType="Self.Service" />
+          <EntitySet Name="SpisokTovars" EntityType="Self.SpisokTovar" />
+          <EntitySet Name="StatusEmployees" EntityType="Self.StatusEmployee" />
+          <EntitySet Name="StatusNotes" EntityType="Self.StatusNote" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Tovars" EntityType="Self.Tovar" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_Tovar_Brand" Association="Self.FK_Tovar_Brand">
+            <End Role="Brand" EntitySet="Brands" />
+            <End Role="Tovar" EntitySet="Tovars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Service_CategoryService" Association="Self.FK_Service_CategoryService">
+            <End Role="CategoryService" EntitySet="CategoryServices" />
+            <End Role="Service" EntitySet="Services" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tovar_CategoryTovar" Association="Self.FK_Tovar_CategoryTovar">
+            <End Role="CategoryTovar" EntitySet="CategoryTovars" />
+            <End Role="Tovar" EntitySet="Tovars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tovar_Country" Association="Self.FK_Tovar_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Tovar" EntitySet="Tovars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dog_User" Association="Self.FK_Dog_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Dog" EntitySet="Dogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NoteService_Dog" Association="Self.FK_NoteService_Dog">
+            <End Role="Dog" EntitySet="Dogs" />
+            <End Role="NoteService" EntitySet="NoteServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NoteService_Service" Association="Self.FK_NoteService_Service">
+            <End Role="Service" EntitySet="Services" />
+            <End Role="NoteService" EntitySet="NoteServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NoteService_StatusNote" Association="Self.FK_NoteService_StatusNote">
+            <End Role="StatusNote" EntitySet="StatusNotes" />
+            <End Role="NoteService" EntitySet="NoteServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NoteService_User" Association="Self.FK_NoteService_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="NoteService" EntitySet="NoteServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Postavka_Tovar" Association="Self.FK_Postavka_Tovar">
+            <End Role="Tovar" EntitySet="Tovars" />
+            <End Role="Postavka" EntitySet="Postavkas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prodazha_User1" Association="Self.FK_Prodazha_User1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Prodazha" EntitySet="Prodazhas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpisokTovars_Prodazha" Association="Self.FK_SpisokTovars_Prodazha">
+            <End Role="Prodazha" EntitySet="Prodazhas" />
+            <End Role="SpisokTovars" EntitySet="SpisokTovars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpisokTovars_Tovar" Association="Self.FK_SpisokTovars_Tovar">
+            <End Role="Tovar" EntitySet="Tovars" />
+            <End Role="SpisokTovars" EntitySet="SpisokTovars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_StatusEmployee" Association="Self.FK_User_StatusEmployee">
+            <End Role="StatusEmployee" EntitySet="StatusEmployees" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище BD_PuppyHouseModelContainer" CdmEntityContainer="BD_PuppyHouseEntities">
+          <EntitySetMapping Name="Brands">
+            <EntityTypeMapping TypeName="BD_PuppyHouseModel.Brand">
+              <MappingFragment StoreEntitySet="Brand">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoryServices">
+            <EntityTypeMapping TypeName="BD_PuppyHouseModel.CategoryService">
+              <MappingFragment StoreEntitySet="CategoryService">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoryTovars">
+            <EntityTypeMapping TypeName="BD_PuppyHouseModel.CategoryTovar">
+              <MappingFragment StoreEntitySet="CategoryTovar">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="BD_PuppyHouseModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dogs">
+            <EntityTypeMapping TypeName="BD_PuppyHouseModel.Dog">
+              <MappingFragment StoreEntitySet="Dog">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Poroda" ColumnName="Poroda" />
+                <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NoteServices">
+            <EntityTypeMapping TypeName="BD_PuppyHouseModel.NoteService">
+              <MappingFragment StoreEntitySet="NoteService">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Master" ColumnName="ID_Master" />
+                <ScalarProperty Name="ID_Dog" ColumnName="ID_Dog" />
+                <ScalarProperty Name="ID_Service" ColumnName="ID_Service" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Sale" ColumnName="Sale" />
+                <ScalarProperty Name="ID_Status" ColumnName="ID_Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Postavkas">
+            <EntityTypeMapping TypeName="BD_PuppyHouseModel.Postavka">
+              <MappingFragment StoreEntitySet="Postavka">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Tovar" ColumnName="ID_Tovar" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prodazhas">
+            <EntityTypeMapping TypeName="BD_PuppyHouseModel.Prodazha">
+              <MappingFragment StoreEntitySet="Prodazha">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Employee" ColumnName="ID_Employee" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="BD_PuppyHouseModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="BD_PuppyHouseModel.Service">
+              <MappingFragment StoreEntitySet="Service">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="ID_Category" ColumnName="ID_Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SpisokTovars">
+            <EntityTypeMapping TypeName="BD_PuppyHouseModel.SpisokTovar">
+              <MappingFragment StoreEntitySet="SpisokTovars">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Prodazha" ColumnName="ID_Prodazha" />
+                <ScalarProperty Name="ID_Tovar" ColumnName="ID_Tovar" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusEmployees">
+            <EntityTypeMapping TypeName="BD_PuppyHouseModel.StatusEmployee">
+              <MappingFragment StoreEntitySet="StatusEmployee">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusNotes">
+            <EntityTypeMapping TypeName="BD_PuppyHouseModel.StatusNote">
+              <MappingFragment StoreEntitySet="StatusNote">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BD_PuppyHouseModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tovars">
+            <EntityTypeMapping TypeName="BD_PuppyHouseModel.Tovar">
+              <MappingFragment StoreEntitySet="Tovar">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ID_Category" ColumnName="ID_Category" />
+                <ScalarProperty Name="ID_Brand" ColumnName="ID_Brand" />
+                <ScalarProperty Name="ID_Country" ColumnName="ID_Country" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="BD_PuppyHouseModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ID_Role" ColumnName="ID_Role" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ID_StatusEmployee" ColumnName="ID_StatusEmployee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

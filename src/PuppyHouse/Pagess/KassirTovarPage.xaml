@@ -1,0 +1,100 @@
+﻿<UserControl x:Class="KP_4_PuppyHouse1.Pagess.KassirTovarPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:Inter="http://schemas.microsoft.com/xaml/behaviors"
+    mc:Ignorable="d" 
+    d:DesignHeight="450" d:DesignWidth="800">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <!-- Заголовок -->
+            <RowDefinition Height="auto"/>
+            <!-- Панель управления -->
+            <RowDefinition Height="auto"/>
+            <!-- Фильтры и поиск -->
+            <RowDefinition Height="auto"/>
+            <!-- Панель с кнопками -->
+            <RowDefinition Height="auto"/>
+            <!-- Таблица с данными -->
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <TextBlock Grid.Row="0" Text="Продажа товаров" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0"
+                   HorizontalAlignment="Left" Foreground="#121518"/>
+
+        <!-- Панель управления -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+
+        <!-- Фильтры и поиск -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 15 0 0" HorizontalAlignment="Stretch">
+            <TextBox TextChanged="SearchBox_TextChanged" x:Name="SearchBox" Width="200" Margin="10 0 10 0" VerticalAlignment="Center"
+                     Style="{StaticResource textBoxSearch}" 
+                     Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Height="41" />
+
+            <ComboBox SelectionChanged="CategoryFilter_SelectionChanged" x:Name="CategoryFilter" Width="170" Margin="10 0 10 0" VerticalAlignment="Center"
+                      ItemsSource="{Binding Categories}"                    
+                      Style="{StaticResource ComboBoxFlatStyle}" Height="27"/>
+
+            <ComboBox SelectionChanged="BrandFilter_SelectionChanged" x:Name="BrandFilter" Width="170" Margin="10 0 10 0" VerticalAlignment="Center"
+                      ItemsSource="{Binding Brands}"
+                      Style="{StaticResource ComboBoxFlatStyle}" Height="27"/>
+
+            <ComboBox SelectionChanged="CountryFilter_SelectionChanged" x:Name="CountryFilter" Width="170" Margin="10 0 10 0" VerticalAlignment="Center"
+                      ItemsSource="{Binding Countries}" 
+                      SelectedItem="{Binding SelectedCountry, UpdateSourceTrigger=PropertyChanged}" 
+                      Style="{StaticResource ComboBoxFlatStyle}" Height="27"/>
+        </StackPanel>
+
+        <!-- Панель с кнопками управления количеством товара и добавления в корзину -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,61,10,60" Grid.RowSpan="3" Width="362">
+            <Button Click="DecreaseQuantity" Margin="5" Style="{StaticResource gridRemoveButton}" Width="30">
+                <TextBlock Text="-"/>
+            </Button>
+
+            <TextBox x:Name="QuantityTextBox" Width="50" Margin="5" TextAlignment="Center" Text="{Binding _quantity, Mode=TwoWay}"/>
+
+            <Button Click="IncreaseQuantity" Margin="5" Style="{StaticResource gridEditButton}" Width="30">
+                <TextBlock Text="+"/>
+            </Button>
+
+            <Button Click="AddToCart" Margin="5" Style="{StaticResource addButton}" Width="136">
+                <TextBlock Text="Добавить в корзину"/>
+            </Button>
+            <Button x:Name="CartBtn" Style="{StaticResource addButton3}" Command="{Binding DeleteSelectedCommand}" Width="60" Height="35" Click="CartBtn_Click" Margin="10,0,0,0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="🛒"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+        <!-- Таблица с товарами -->
+        <DataGrid x:Name="dataGrid" Style="{DynamicResource DataGridStyle}" 
+                  CellStyle="{DynamicResource DataGridCellStyle}" 
+                  RowStyle="{DynamicResource DataGridRowStyle}" 
+                  ColumnHeaderStyle="{StaticResource TransparentHeaderStyle}"
+                  Grid.Row="4" ItemsSource="{Binding FilteredProducts}" Margin="0,10,0,10" Grid.RowSpan="2" FontSize="18">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Товар" IsReadOnly="True" Width="*" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Бренд" IsReadOnly="True" Width="*" Binding="{Binding Brand.Name}"/>
+                <DataGridTextColumn Header="Цена" IsReadOnly="True" Width="*" Binding="{Binding Price}"/>
+                <!-- Столбец с изображением -->
+                <DataGridTemplateColumn Header="Фото" Width="Auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding PhotoFull}" Width="100" Height="100" Stretch="UniformToFill"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Категории:" HorizontalAlignment="Left" Margin="237,4,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <Label Content="Бренд:" HorizontalAlignment="Left" Margin="428,4,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <Label Content="Поиск:" HorizontalAlignment="Left" Margin="16,0,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <Label Content="Страны:" HorizontalAlignment="Left" Margin="615,4,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+    </Grid>
+</UserControl>

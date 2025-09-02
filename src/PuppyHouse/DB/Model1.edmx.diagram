@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="aab02c3698424693983c32587bab1640" Name="Diagram1">
+        <EntityTypeShape EntityType="BD_PuppyHouseModel.Brand" Width="1.5" PointX="3" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_PuppyHouseModel.CategoryService" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_PuppyHouseModel.CategoryTovar" Width="1.5" PointX="3" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_PuppyHouseModel.Country" Width="1.5" PointX="3" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_PuppyHouseModel.Dog" Width="1.5" PointX="5.25" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_PuppyHouseModel.NoteService" Width="1.5" PointX="7.5" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_PuppyHouseModel.Postavka" Width="1.5" PointX="7.5" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_PuppyHouseModel.Prodazha" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_PuppyHouseModel.Role" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_PuppyHouseModel.Service" Width="1.5" PointX="5.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_PuppyHouseModel.SpisokTovar" Width="1.5" PointX="7.5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_PuppyHouseModel.StatusEmployee" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_PuppyHouseModel.StatusNote" Width="1.5" PointX="5.25" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_PuppyHouseModel.sysdiagram" Width="1.5" PointX="9.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_PuppyHouseModel.Tovar" Width="1.5" PointX="5.25" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_PuppyHouseModel.User" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <AssociationConnector Association="BD_PuppyHouseModel.FK_Tovar_Brand" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_PuppyHouseModel.FK_Service_CategoryService" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_PuppyHouseModel.FK_Tovar_CategoryTovar" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_PuppyHouseModel.FK_Tovar_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_PuppyHouseModel.FK_Dog_User" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_PuppyHouseModel.FK_NoteService_Dog" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_PuppyHouseModel.FK_NoteService_Service" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_PuppyHouseModel.FK_NoteService_StatusNote" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_PuppyHouseModel.FK_NoteService_User" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_PuppyHouseModel.FK_Postavka_Tovar" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_PuppyHouseModel.FK_Prodazha_User1" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_PuppyHouseModel.FK_SpisokTovars_Prodazha" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_PuppyHouseModel.FK_User_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_PuppyHouseModel.FK_SpisokTovars_Tovar" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_PuppyHouseModel.FK_User_StatusEmployee" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

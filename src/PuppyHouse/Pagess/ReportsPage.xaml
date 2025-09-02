@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="KP_4_PuppyHouse1.Pagess.ReportsPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KP_4_PuppyHouse1.Pagess"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Background="Transparent">
+        <TextBlock Text="Отчеты" FontSize="24" FontWeight="Bold" Margin="10,0,0,410" HorizontalAlignment="Left"/>
+        <TabControl Margin="10,50,10,10" Background="#00000000">
+            <!-- Вкладка 1 -->
+            <TabItem Header="Поставка">
+                <Grid Background="Transparent">
+                    <TextBox x:Name="SearchByNamePostavka" Margin="10,10,0,0"  Style="{StaticResource textBoxSearch}" VerticalAlignment="Top" Height="37" HorizontalAlignment="Left" Width="160" TextChanged="SearchByNamePostavka_TextChanged_1" />
+
+                    <DataGrid  x:Name="PostavkaDataGrid" AutoGenerateColumns="False" Style="{StaticResource DataGridStyle}"
+                                     CellStyle="{DynamicResource DataGridCellStyle}" RowStyle="{DynamicResource DataGridRowStyle}" ColumnHeaderStyle="{StaticResource TransparentHeaderStyle}" Margin="0,60,0,0">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Товар" Binding="{Binding Tovar.Name}" Width="*"/>
+                            <DataGridTextColumn Header="Количество" Binding="{Binding Count}" Width="*"/>
+                            <DataGridTextColumn Header="Время поставки" Binding="{Binding Date}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <!-- Вкладка 2 -->
+            <TabItem Header="Продажа">
+                <Grid Background="Transparent">
+                    <TextBox x:Name="SearchByNameKass" Margin="10,10,0,0"  Style="{StaticResource textBoxSearch}" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" Width="160" TextChanged="SearchByNameKass_TextChanged" />
+
+                    <!-- Таблица -->
+                    <DataGrid x:Name="ProdazhaDataGrid" AutoGenerateColumns="False" Style="{StaticResource DataGridStyle}"
+                                    CellStyle="{DynamicResource DataGridCellStyle}" 
+                                    RowStyle="{DynamicResource DataGridRowStyle}" 
+                                    ColumnHeaderStyle="{StaticResource TransparentHeaderStyle}" MouseDoubleClick="ProdazhaDataGrid_MouseDoubleClick_1" Margin="0,68,0,0">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Кассир" Binding="{Binding User.FIO}" Width="*"/>
+                            <DataGridTextColumn Header="Дата" Binding="{Binding Date}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

@@ -1,0 +1,131 @@
+﻿<Window x:Class="KP_4_PuppyHouse1.Win.CartWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Корзина" Height="450" Width="600"
+        WindowStartupLocation="CenterScreen"
+        ShowInTaskbar="False"
+        ResizeMode="NoResize"
+        WindowStyle="SingleBorderWindow">
+
+    <Window.Resources>
+        <!-- Стиль для TextBox -->
+        <Style TargetType="TextBox" x:Key="textBoxInput">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border CornerRadius="10" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <ScrollViewer Margin="0" x:Name="PART_ContentHost" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Margin" Value="0 4 0 10"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Background" Value="#ebdfe1 "/>
+            <Setter Property="BorderBrush" Value="#CCCCCC"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Height" Value="30"/>
+        </Style>
+
+        <!-- Стиль для ComboBox -->
+        <Style TargetType="ComboBox" x:Key="comboBoxInput">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <Border x:Name="Border" CornerRadius="10" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                <Grid>
+                                    <ToggleButton Name="ToggleButton" IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                                  Background="#ebdfe1" BorderThickness="0">
+                                        <Path Data="M 0 0 L 4 4 L 8 0 Z" Fill="#888888" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                    </ToggleButton>
+                                    <ContentPresenter Name="ContentSite" IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}"
+                                                      Margin="10,3,25,3" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                </Grid>
+                            </Border>
+                            <Popup Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="True">
+                                <Border x:Name="DropDownBorder" Background="#FFFFFF" BorderBrush="#888888" BorderThickness="1" CornerRadius="10">
+                                    <ScrollViewer Margin="4,6,4,6">
+                                        <StackPanel IsItemsHost="True"/>
+                                    </ScrollViewer>
+                                </Border>
+                            </Popup>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Margin" Value="0 4 0 10"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Background" Value="#FFFFFF"/>
+            <Setter Property="BorderBrush" Value="#CCCCCC"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Height" Value="40"/>
+        </Style>
+
+        <!-- Стиль для кнопки -->
+        <Style TargetType="Button" x:Key="addButton">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="10" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="#b7cede "/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="10 5"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Width" Value="160"/>
+            <Setter Property="Height" Value="30"/>
+        </Style>
+    </Window.Resources>
+
+    <Border Background="#EBEAF5">
+        <Grid Background="#FFFAFCFB">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" FontSize="25" FontWeight="SemiBold" Margin="30 35 0 0" Text="Корзина"/>
+
+            <DataGrid  Style="{DynamicResource DataGridStyle}" 
+               CellStyle="{DynamicResource DataGridCellStyle}" 
+               RowStyle="{DynamicResource DataGridRowStyle}" 
+               ColumnHeaderStyle="{StaticResource TransparentHeaderStyle}" x:Name="cartDataGrid" ItemsSource="{Binding _cart}" Margin="10,10,10,10" Grid.Row="1" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <!-- Название товара -->
+                    <DataGridTextColumn Header="Название товара" Binding="{Binding Tovar.Name}" Width="*"/>
+                    <!-- Количество товара -->
+                    <DataGridTextColumn Header="Количество" Binding="{Binding Count}" Width="auto"/>
+                    <!-- Общая стоимость товара -->
+                    <DataGridTextColumn Header="Общая стоимость" Binding="{Binding TotalPriceTovar, StringFormat='{}{0:F2} ₽'}" Width="auto"/>
+                    <!-- Кнопка удаления -->
+                    <DataGridTemplateColumn Header="Удалить" Width="auto">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="RemoveFromCart" Style="{StaticResource gridRemoveButton}">
+                                    <TextBlock Text="Удалить"/>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="30,10,30,10">
+                <TextBlock x:Name="TotalPriceTextBlock" Text="Общая сумма:" FontSize="16" FontWeight="Bold" VerticalAlignment="Center" Width="212"/>
+                <Button Style="{StaticResource addButton}" Command="{Binding PayCommand}" Content="Оплатить" Margin="20,0,0,0" FontSize="16" FontWeight="Bold" Click="Button_Click" Background="#FFAEC289"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>
