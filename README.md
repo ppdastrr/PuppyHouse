@@ -14,7 +14,7 @@
 - Формы: Windows Forms (или WPF)  
 - База данных: SQL Server 2019
 ## Структура
-src/ # Исходный код проекта
+src/ - Исходный код проекта
 docs/ - Документация
 docs/Instruction_operator.docx - Руководство оператора 
 .gitignore - Исключение временных файлов
